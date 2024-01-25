@@ -6,6 +6,7 @@ import sys
 from button import Button
 from music import music, change_volume
 
+# Основные константы
 pygame.init()
 WIDTH = 606
 HEIGHT = 606
@@ -35,6 +36,7 @@ def draw_text(text, font, color, surface, x, y):
     surface.blit(text_obj, text_rect)
 
 
+# Кнопки
 fade_surface = pygame.Surface(WINDOW_SIZE)
 main_button = Button(WIDTH / 2 - (252 / 2), 150, 252, 74, white, "Играть")
 settings_button = Button(WIDTH / 2 - (252 / 2), 250, 252, 74, white, "Настройки")
@@ -43,9 +45,10 @@ back_button = Button(WIDTH / 2 - (252 / 2), 450, 252, 74, white, "Назад")
 slider = Slider(screen, 200, 200, 200, 20, min=0.0, max=1.0, step=0.1, colour=white, handleColour=gray, handleRadius=9,
                 initial=0.1)
 output = TextBox(screen, 425, 195, 40, 30, fontSize=25)
-sound_text = TextBox(screen, 125, 195, 40, 30, fontSize=25,  colour=black, textColour=white)
+sound_text = TextBox(screen, 125, 195, 40, 30, fontSize=25, colour=black, textColour=white)
 
 
+# Для перехода между экранами
 def fade():
     running = True
     fade_alpha = 0
@@ -70,6 +73,7 @@ def fade():
         pygame.display.flip()
 
 
+# Отрисовка основного меню
 def main_menu():
     running = True
 
@@ -98,6 +102,7 @@ def main_menu():
         pygame.display.flip()
 
 
+# Отрисовка окна настроек
 def settings():
     running = True
 
@@ -128,6 +133,7 @@ def settings():
         pygame.display.flip()
 
 
+# Основная игра
 def start_game():
     class Wall(pygame.sprite.Sprite):
         def __init__(self, x, y, width, height, color):
@@ -539,6 +545,6 @@ def start_game():
     startGame()
     pygame.quit()
 
-
+# Запуск программы
 if __name__ == "__main__":
     main_menu()
